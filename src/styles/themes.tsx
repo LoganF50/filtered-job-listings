@@ -34,7 +34,9 @@ const defaultTheme = {
     medium: "375ms",
     long: "500ms",
   },
-  fontFamily: {},
+  fontFamily: {
+    primary: "'League Spartan', sans-serif",
+  },
   fontSize: {
     base100: "0.75rem",
     base200: "0.875rem",
@@ -48,15 +50,8 @@ const defaultTheme = {
     base1000: "6rem",
   },
   fontWeight: {
-    thin: "100",
-    extraLight: "200",
-    light: "300",
-    normal: "400",
     medium: "500",
-    semiBold: "600",
     bold: "700",
-    extraBold: "800",
-    black: "900",
   },
   spacing: {
     base100: "0.125rem",
@@ -72,26 +67,19 @@ const defaultTheme = {
   },
 };
 
-const darkTheme = {
-  name: "dark",
-  color: {
-    ...defaultTheme.color,
-  },
-};
-
 const lightTheme = {
   name: "light",
   color: {
     ...defaultTheme.color,
+    primary: "hsl(180, 29%, 50%)",
+    background: "hsl(180, 52%, 96%)",
+    filter: "hsl(180, 31%, 95%)",
+    darkCyan: "hsl(180, 8%, 52%)",
+    veryDarkCyan: "hsl(180, 14%, 20%)",
   },
 };
 
 export const Themes = {
-  dark: {
-    ...defaultTheme,
-    name: darkTheme.name,
-    color: darkTheme.color,
-  },
   light: {
     ...defaultTheme,
     name: lightTheme.name,

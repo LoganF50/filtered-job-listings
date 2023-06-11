@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: ${({ theme }) => theme.color.background};
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
   }
@@ -16,6 +17,9 @@ const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: ${({ theme }) => theme.fontFamily.primary};
+  font-size: ${({ theme }) => theme.fontSize.base300};
+  font-weight: ${({ theme }) => theme.fontWeight.medium};
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     max-width: 1200px;
@@ -23,13 +27,7 @@ const StyledApp = styled.div`
 `;
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(Themes.dark);
-
-  const toggleTheme = () => {
-    currentTheme.name === "dark"
-      ? setCurrentTheme(Themes.light)
-      : setCurrentTheme(Themes.dark);
-  };
+  const [currentTheme, setCurrentTheme] = useState(Themes.light);
 
   return (
     <>
@@ -38,7 +36,7 @@ function App() {
         <Wrapper>
           <StyledApp>
             <h1>Template: Vite React TS</h1>
-            <button onClick={toggleTheme}>Theme Toggle</button>
+            <button>Theme Toggle</button>
           </StyledApp>
         </Wrapper>
       </ThemeProvider>
