@@ -19,6 +19,9 @@ const defaultTheme = {
     base300: "4px",
     base400: "8px",
   },
+  boxShadow: {
+    primary: "0px 10px 20px 0px hsla(180, 29%, 50%, 0.2)",
+  },
   breakpoint: {
     mobileSm: "320px",
     mobileMd: "375px",
@@ -76,6 +79,7 @@ const lightTheme = {
     filter: "hsl(180, 31%, 95%)",
     darkCyan: "hsl(180, 8%, 52%)",
     veryDarkCyan: "hsl(180, 14%, 20%)",
+    white: "hsl(0, 0%, 100%)",
   },
 };
 

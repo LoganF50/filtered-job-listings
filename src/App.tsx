@@ -1,7 +1,11 @@
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles/globalStyle";
 import { Themes } from "./styles/themes";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
+import { Filter } from "./components/Filter";
+import { FilterSection } from "./components/FilterSection";
+import { Header } from "./components/Header";
+import { FilterTablet } from "./components/FilterTablet";
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,17 +30,79 @@ const StyledApp = styled.div`
   }
 `;
 
+const StyledMain = styled.main`
+  margin: ${({ theme }) => theme.spacing.base600};
+`;
+
+type FilterData = {
+  category: string;
+  name: string;
+};
+
+const initialFilters: FilterData[] = [
+  { category: "role", name: "Frontend" },
+  { category: "language", name: "CSS" },
+  { category: "language", name: "JavaScript" },
+];
+
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(Themes.light);
+  const [filters, setFilters] = useState<FilterData[]>(initialFilters);
+
+  const AddFilter = (addedFilter: FilterData) => {
+    let shouldAdd = true;
+
+    filters.forEach((filter) => {
+      if (
+        filter.category === addedFilter.category &&
+        filter.name === addedFilter.name
+      ) {
+        shouldAdd = false;
+      }
+    });
+
+    if (shouldAdd) {
+      const newFilters = [...filters, addedFilter];
+      setFilters(newFilters);
+    }
+  };
+
+  const ClearFilters = () => {
+    setFilters([]);
+  };
+
+  const removeFilter = (clickedFilter: FilterData) => {
+    const newFilters = filters.filter(
+      (filter) =>
+        filter.category !== clickedFilter.category ||
+        filter.name !== clickedFilter.name
+    );
+
+    setFilters(newFilters);
+  };
 
   return (
     <>
-      <ThemeProvider theme={currentTheme}>
+      <ThemeProvider theme={Themes.light}>
         <GlobalStyle />
         <Wrapper>
           <StyledApp>
-            <h1>Template: Vite React TS</h1>
-            <button>Theme Toggle</button>
+            <Header />
+            <StyledMain>
+              {filters.length > 0 && (
+                <FilterSection
+                  filters={filters.map((filter) => {
+                    return (
+                      <Filter
+                        key={`${filter.category}${filter.name}`}
+                        name={filter.name}
+                        onClick={() => removeFilter(filter)}
+                      />
+                    );
+                  })}
+                  onClear={ClearFilters}
+                />
+              )}
+            </StyledMain>
           </StyledApp>
         </Wrapper>
       </ThemeProvider>
