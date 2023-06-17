@@ -6,7 +6,7 @@ const StyledFilterSection = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   border-radius: ${({ theme }) => theme.borderRadius.base200};
   box-shadow: ${({ theme }) => theme.boxShadow.primary};
-  padding: ${({ theme }) => theme.spacing.base600};
+  padding: ${({ theme }) => theme.spacing.base700};
   transform: translate(0, -55px);
 `;
 
