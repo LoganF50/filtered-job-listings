@@ -277,6 +277,24 @@ function App() {
     setFilters(newFilters);
   };
 
+  const shouldIncludePost = (post: PostData) => {
+    const postFilters = getFiltersFromPost(post);
+    let shouldInclude = true;
+
+    filters.forEach((filter) => {
+      const found = postFilters.find(
+        (postFilter) =>
+          postFilter.category === filter.category &&
+          postFilter.name === filter.name
+      );
+      if (found === undefined) {
+        shouldInclude = false;
+      }
+    });
+
+    return shouldInclude;
+  };
+
   return (
     <>
       <ThemeProvider theme={Themes.light}>
@@ -300,31 +318,33 @@ function App() {
                 />
               )}
               <PostSection isFiltersShown={filters.length > 0}>
-                {posts.map((post) => {
-                  return (
-                    <Post
-                      key={post.id}
-                      company={post.company}
-                      logo={post.logo}
-                      isNew={post.new}
-                      isFeatured={post.featured}
-                      position={post.position}
-                      postedAt={post.postedAt}
-                      contract={post.contract}
-                      location={post.location}
-                      filters={getFiltersFromPost(post).map((filter) => {
-                        return (
-                          <FilterTablet
-                            key={`${filter.category}${filter.name}`}
-                            name={filter.name}
-                            onClick={() => addFilter({ ...filter })}
-                          />
-                        );
-                      })}
-                      onClick={() => ""}
-                    />
-                  );
-                })}
+                {posts
+                  .filter((post) => shouldIncludePost(post))
+                  .map((post) => {
+                    return (
+                      <Post
+                        key={post.id}
+                        company={post.company}
+                        logo={post.logo}
+                        isNew={post.new}
+                        isFeatured={post.featured}
+                        position={post.position}
+                        postedAt={post.postedAt}
+                        contract={post.contract}
+                        location={post.location}
+                        filters={getFiltersFromPost(post).map((filter) => {
+                          return (
+                            <FilterTablet
+                              key={`${filter.category}${filter.name}`}
+                              name={filter.name}
+                              onClick={() => addFilter({ ...filter })}
+                            />
+                          );
+                        })}
+                        onClick={() => ""}
+                      />
+                    );
+                  })}
               </PostSection>
             </StyledMain>
           </StyledApp>
