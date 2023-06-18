@@ -79,7 +79,7 @@ const initialPosts: PostData[] = postData;
 
 function App() {
   const [filters, setFilters] = useState<FilterData[]>(initialFilters);
-  const [posts, setPosts] = useState<PostData[]>(initialPosts);
+  const posts = initialPosts;
 
   const addFilter = (addedFilter: FilterData) => {
     let shouldAdd = true;
