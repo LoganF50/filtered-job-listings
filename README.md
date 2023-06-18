@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [FrontendMentor Solution URL]()
+- Solution URL: [FrontendMentor Solution URL](https://www.frontendmentor.io/solutions/responsive-filtered-job-listings-HR2ZaVMeFf)
 - Live Site URL: [Github Pages URL](https://loganf50.github.io/filtered-job-listings/)
 
 ## My process
