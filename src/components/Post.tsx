@@ -19,6 +19,10 @@ const StyledPost = styled.div`
       cursor: pointer;
       color: ${({ theme }) => theme.color.primary};
     }
+
+    @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+      font-size: ${({ theme }) => theme.fontSize.base500};
+    }
   }
 
   & img {
@@ -28,6 +32,20 @@ const StyledPost = styled.div`
     top: 0;
     left: 0;
     transform: translate(50%, -50%);
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    flex-direction: row;
+    align-items: center;
+    padding: ${({ theme }) =>
+      `${theme.spacing.base600} ${theme.spacing.base800}`};
+
+    & img {
+      position: static;
+      transform: none;
+      height: 5.5rem;
+      width: 5.5rem;
+    }
   }
 `;
 
@@ -60,6 +78,10 @@ const FlexRowGray = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.color.darkCyan};
   gap: ${({ theme }) => theme.spacing.base300};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: ${({ theme }) => theme.fontSize.base400};
+  }
 `;
 
 const PillSection = styled.div`
@@ -71,6 +93,10 @@ const Company = styled.div`
   color: ${({ theme }) => theme.color.primary};
   font-size: ${({ theme }) => theme.fontSize.base200};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: ${({ theme }) => theme.fontSize.base400};
+  }
 `;
 
 const Pill = styled.div<PillProps>`
@@ -92,6 +118,10 @@ const Pill = styled.div<PillProps>`
 const Splitter = styled.div`
   height: 1px;
   background-color: ${({ theme }) => theme.color.darkCyan};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    display: none;
+  }
 `;
 
 const Filters = styled.div`
@@ -99,6 +129,7 @@ const Filters = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing.base500};
+  margin-left: auto;
 `;
 
 type PostProps = {

@@ -27,12 +27,16 @@ const StyledApp = styled.div`
   font-weight: ${({ theme }) => theme.fontWeight.medium};
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    max-width: 1200px;
   }
 `;
 
 const StyledMain = styled.main`
-  margin: ${({ theme }) => theme.spacing.base600};
+  padding: ${({ theme }) => theme.spacing.base600};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    align-self: center;
+    width: min(1150px, 100%);
+  }
 `;
 
 const PostSection = styled.div<{ isFiltersShown: boolean }>`
@@ -41,6 +45,10 @@ const PostSection = styled.div<{ isFiltersShown: boolean }>`
   gap: ${({ theme }) => theme.spacing.base1000};
   padding-top: ${({ isFiltersShown, theme }) =>
     isFiltersShown ? "" : theme.spacing.base700};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    gap: ${({ theme }) => theme.spacing.base700};
+  }
 `;
 
 type FilterData = {
@@ -64,11 +72,7 @@ type PostData = {
   tools: string[];
 };
 
-const initialFilters: FilterData[] = [
-  { category: "role", name: "Frontend" },
-  { category: "languages", name: "CSS" },
-  { category: "languages", name: "JavaScript" },
-];
+const initialFilters: FilterData[] = [];
 
 const initialPosts: PostData[] = [
   {

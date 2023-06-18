@@ -8,6 +8,11 @@ const StyledFilterSection = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadow.primary};
   padding: ${({ theme }) => theme.spacing.base700};
   transform: translate(0, -55px);
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    padding: ${({ theme }) =>
+      `${theme.spacing.base600} ${theme.spacing.base800}`};
+  }
 `;
 
 const FilterGroup = styled.div`
